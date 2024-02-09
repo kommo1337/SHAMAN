@@ -1,0 +1,36 @@
+﻿<Window x:Class="DemoEKZA.WindowFolder.EventList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoEKZA.WindowFolder"
+        mc:Ignorable="d"
+        Title="Окно модератора" Height="450" Width="800">
+    <Grid Background="White">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10" >
+                <Label Content="Направление:" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
+                <ComboBox Width="150" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#99FFFF" Name="NapCB"
+                              ItemsSource="{Binding Napravlenie}" DisplayMemberPath="NapravlenieName"
+                                    SelectedValuePath="IdNapravlenie"
+                                SelectedValue="{Binding Path=IdNapravlenie}"/>
+                <Label Content="Мероприятие:" Margin="10,0,0,0" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
+                <ComboBox Width="150" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#99FFFF" Name="EventCb"
+                          ItemsSource="{Binding Event}" DisplayMemberPath="EventName"
+                        SelectedValuePath="IdEvent"
+                                SelectedValue="{Binding Path=IdEvent}"/>
+                <Button Content="Поиск" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Click="Button_Click"/>
+                <TextBlock Name="PrivetTB" Margin="10,0,0,0" Width="207"/>
+            </StackPanel>
+            <DataGrid Margin="10" Height="319" FontFamily="Comic Sans MS" Background="#99FFFF" Name="DgEvent" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Активности" Width="*" Binding="{Binding EventName}"/>
+                    <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding EventDateTime}"/>
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="подать заявку" Margin="10" FontFamily="Comic Sans MS" HorizontalAlignment="Right" Width="138" Background="#0000CC" Foreground="White" Click="Button_Click_1"/>
+        </StackPanel>
+    </Grid>
+
+</Window>
