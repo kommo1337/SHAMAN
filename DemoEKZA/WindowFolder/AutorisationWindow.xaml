@@ -12,6 +12,8 @@
             <TextBox Width="200" Margin="0,0,0,15" Name="LoginTb"/>
             <Label Content="Пароль:" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
             <PasswordBox Width="200" Margin="0,0,0,15" Name="PasswordPb"/>
+            <Image x:Name="CaptchaImage" Stretch="Fill" Height="100" Margin="0,0,0,15"/>
+            <TextBox x:Name="CaptchaTB" Margin="0,0,0,15"/>
             <Button Content="Войти" Width="200" Background="#0000CC" Foreground="White" FontFamily="Comic Sans MS" Margin="0,0,0,15" Click="Button_Click"/>
             <Button Content="Регестрация " Width="200" Background="#0000CC" Foreground="White" FontFamily="Comic Sans MS" Margin="0,0,0,15" Click="Button_Click_1"/>
 

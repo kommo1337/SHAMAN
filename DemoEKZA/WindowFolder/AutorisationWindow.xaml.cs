@@ -2,6 +2,8 @@
 using DemoEKZA.DataFolder;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,31 +23,83 @@ namespace DemoEKZA.WindowFolder
     /// </summary>
     public partial class AutorisationWindow : Window
     {
+        private int _failedAttempts;
+        private DateTime _lockoutEnd;
 
-        
         public AutorisationWindow()
         {
             InitializeComponent();
+            LoadCaptcha();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string username = LoginTb.Text;
+            string password = PasswordPb.Password;
+
+            if (IsValidLogin(username, password))
+            {
+                _failedAttempts = 0;
+            }
+            else
+            {
+                _failedAttempts++;
+
+                if (_failedAttempts >= 3)
+                {
+                    _lockoutEnd = DateTime.Now.AddSeconds(10);
+                    MBClass.ErrorMB("Слишком много неудачных попыток входа. Система будет заблокирована.");
+                    IsEnabled = false;
+
+                    CheckLockoutStatusAsync();
+                }
+            }
+        }
+
+        public async Task CheckLockoutStatusAsync()
+        {
+            while (true)
+            {
+                if (DateTime.Now >= _lockoutEnd)
+                {
+                    IsEnabled = true;
+                    break;
+                }
+
+                await Task.Delay(1000);
+            }
+        }
+
+        private bool IsValidLogin(string username, string password)
         {
             try
             {
                 var user = DBEntities.GetContext()
                     .User.FirstOrDefault(u => u.Login == LoginTb.Text);
+                string userInput = CaptchaTB.Text;
+                
+
+                if (VerifyCaptcha1(userInput) == false)
+                {
+                    return false;
+                }
 
                 if (user == null)
                 {
+                    MBClass.ErrorMB("Пользователь не введен");
+                    return false;
+                }
+                    if (user == null)
+                {
                     MBClass.ErrorMB("Введен не верный логин");
                     LoginTb.Focus();
-                    return;
+                    return false;
                 }
                 if (user.Password != PasswordPb.Password)
                 {
                     MBClass.ErrorMB("Введен не верный пароль");
                     PasswordPb.Focus();
-                    return;
+                    return false;
                 }
                 else
                 {
@@ -58,7 +112,7 @@ namespace DemoEKZA.WindowFolder
                             new ModerWindow().Show();
                             break;
                         case 3:
-                            
+
                             break;
                         case 4:
 
@@ -71,6 +125,46 @@ namespace DemoEKZA.WindowFolder
             catch (Exception ex)
             {
                 MBClass.ErrorMB(ex);
+            }
+            return true;
+        }
+
+        private void LoadCaptcha()
+        {
+            var captchaTuple = CaptchaGenerator.GenerateCaptcha(200, 50, 50);
+            var captchaImage = captchaTuple.Item2;
+
+            // Отображение изображения в Image элементе WPF
+            CaptchaImage.Source = ConvertBitmapToBitmapImage(captchaImage);
+        }
+
+        private BitmapImage ConvertBitmapToBitmapImage(Bitmap bitmap)
+        {
+            using (var memory = new MemoryStream())
+            {
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                memory.Position = 0;
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                return bitmapImage;
+            }
+        }
+
+        private bool VerifyCaptcha1(string userInput)
+        {
+            if (CaptchaGenerator.VerifyCaptcha(userInput))
+            {
+                MessageBox.Show("CAPTCHA введена правильно!");
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("CAPTCHA введена неправильно. Попробуйте еще раз.");
+                LoadCaptcha();
+                return false;
             }
         }
 
