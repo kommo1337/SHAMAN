@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace DemoEKZA.WindowFolder
 {
     /// <summary>
-    /// Логика взаимодействия для EventInfo.xaml
+    /// Логика взаимодействия для OrganisatorWindow.xaml
     /// </summary>
-    public partial class EventInfo : Window
+    public partial class OrganisatorWindow : Window
     {
-        public EventInfo()
+        public OrganisatorWindow()
         {
             InitializeComponent();
         }
