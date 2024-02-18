@@ -17,7 +17,10 @@ namespace DemoEKZA.DataFolder
     
     public partial class DBEntities : DbContext
     {
-
+        public DBEntities()
+            : base("name=DBEntities")
+        {
+        }
         private static DBEntities context;
 
         public static DBEntities GetContext()
@@ -28,12 +31,6 @@ namespace DemoEKZA.DataFolder
             }
             return context;
         }
-
-        public DBEntities()
-            : base("name=DBEntities")
-        {
-        }
-    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -45,6 +42,7 @@ namespace DemoEKZA.DataFolder
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<City> City { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

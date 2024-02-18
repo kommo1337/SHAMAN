@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoEKZA.WindowFolder"
         mc:Ignorable="d"
-        Title="OrganisatorWindow" Height="450" Width="800">
+        Title="OrganisatorWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -14,16 +14,16 @@
 
         <StackPanel Grid.Column="0" Margin="10">
             <Border Background="Yellow" Width="180" Height="180">
-                <Image/>
+                <Image x:Name="photouser"/>
             </Border>
-            <Button Content="Мой профиль" Name="ProfileBTN" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Height="153" Margin="15"/>
+            <Button Content="Мой профиль" Name="ProfileBTN" FontFamily="Comic Sans MS" Click="ProfileBTN_Click" Background="#0000CC" Foreground="White" Height="153" Margin="15"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Margin="10">
-            <TextBlock Text="Доброе утро/день/вечер! Ms/Mrs Имя" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
-            <Button Content="Мероприятия" Name="EventButton" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Height="103" Margin="15"/>
-            <Button Content="Участники" Name="UchastnikiBTN" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Height="103" Margin="15"/>
-            <Button Content="Жюри" Name="ZhirnieBTN" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Height="103" Margin="15"/>
+            <TextBlock x:Name="privet" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
+            <Button Content="Мероприятия" Name="EventButton" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Height="103" Margin="15" Click="EventButton_Click"/>
+            <Button Content="Участники" Name="UchastnikiBTN" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Height="103" Margin="15" Click="UchastnikiBTN_Click"/>
+            <Button Content="Жюри" Name="ZhirnieBTN" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Height="103" Margin="15" Click="ZhirnieBTN_Click"/>
         </StackPanel>
     </Grid>
 </Window>

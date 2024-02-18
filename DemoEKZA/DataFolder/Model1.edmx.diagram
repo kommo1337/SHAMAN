@@ -4,17 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="833967888a6e422d8811a890f0bb343f" Name="Diagram1">
+      <Diagram DiagramId="833967888a6e422d8811a890f0bb343f" Name="Diagram1" ZoomLevel="112">
         <EntityTypeShape EntityType="DBModel.Event" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Gender" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Napravlenie" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Role" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
-        <AssociationConnector Association="DBModel.FK_User_Event" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_User_Gender" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_User_Napravlenie" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_Role_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBModel.City" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="DBModel.FK_Event_City" />
+        <AssociationConnector Association="DBModel.FK_User_Role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

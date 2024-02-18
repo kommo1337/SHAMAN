@@ -77,6 +77,7 @@ namespace DemoEKZA.WindowFolder
                 var user = DBEntities.GetContext()
                     .User.FirstOrDefault(u => u.Login == LoginTb.Text);
                 string userInput = CaptchaTB.Text;
+                MBClass.userid = user.IdUser;
                 
 
                 if (VerifyCaptcha1(userInput) == false)

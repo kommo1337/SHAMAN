@@ -7,8 +7,10 @@ using System.Windows;
 
 namespace DemoEKZA.ClassFolder
 {
+    
     internal class MBClass
     {
+        public static int userid = 2;
         public static void ErrorMB(string text)
         {
             MessageBox.Show(text, "Ошибка", MessageBoxButton.OK,

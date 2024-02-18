@@ -12,15 +12,18 @@ namespace DemoEKZA.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Event
+    public partial class City
     {
-        public int IdEvent { get; set; }
-        public string EventName { get; set; }
-        public System.DateTime EventDateTime { get; set; }
-        public int IdUser { get; set; }
-        public int IdCity { get; set; }
-        public string Description { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public City()
+        {
+            this.Event = new HashSet<Event>();
+        }
     
-        public virtual City City { get; set; }
+        public int IdCity { get; set; }
+        public string CityName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Event> Event { get; set; }
     }
 }

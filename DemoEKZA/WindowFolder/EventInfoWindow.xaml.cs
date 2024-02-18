@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoEKZA.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace DemoEKZA.WindowFolder
     /// </summary>
     public partial class EventInfoWindow : Window
     {
-        public EventInfoWindow()
+        Event ev = new Event();
+
+        public EventInfoWindow(Event ev)
         {
             InitializeComponent();
+            DataContext = ev;
+            this.ev = ev;       
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

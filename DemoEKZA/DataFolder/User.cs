@@ -24,11 +24,10 @@ namespace DemoEKZA.DataFolder
         public int IdGender { get; set; }
         public string Phone { get; set; }
         public int IdNapravlenie { get; set; }
-        public int IdEvent { get; set; }
     
-        public virtual Event Event { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual Napravlenie Napravlenie { get; set; }
         public virtual Role Role { get; set; }
+        public virtual Role Role1 { get; set; }
     }
 }

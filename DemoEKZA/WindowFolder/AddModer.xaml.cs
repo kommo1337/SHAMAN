@@ -66,7 +66,6 @@ namespace DemoEKZA.WindowFolder
                         IdRole = index,
                         IdGender = index2,
                         IdNapravlenie = index3,
-                        IdEvent = index4,
                         FIO = FIOTb.Text,
                         Phone = PhonTb.Text,
                         Email = EmailTb.Text
