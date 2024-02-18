@@ -10,20 +10,24 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10" >
                 <Label Content="Фамилия:" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
-                <ComboBox Width="150" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#99FFFF"/>
+                <ComboBox Width="150" Name="SurnameTB" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#99FFFF"
+                              ItemsSource="{Binding User}" DisplayMemberPath="FIO"
+                                    />
                 <Label Content="Мероприятие:" Margin="10,0,0,0" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
-                <ComboBox Width="150" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#99FFFF"/>
-                <Button Content="Поиск" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White"/>
+                <ComboBox Width="150" Name="EventCb" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#99FFFF"
+                          ItemsSource="{Binding Event}" DisplayMemberPath="EventName"/>
+                <Button Content="Поиск" Name="SearchBTN" Margin="10,0,0,0" FontFamily="Comic Sans MS" Background="#0000CC" Foreground="White" Click="SearchBTN_Click"/>
             </StackPanel>
-            <DataGrid Margin="10" Height="319" FontFamily="Comic Sans MS" Background="#99FFFF">
+            <DataGrid Margin="10" Height="319" x:Name="DgUser" FontFamily="Comic Sans MS" Background="#99FFFF" ItemsSource="{Binding User}"  AutoGenerateColumns="False" 
+                  IsReadOnly="True" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Фото" Width="*"/>
-                    <DataGridTextColumn Header="ФИО" Width="*"/>
-                    <DataGridTextColumn Header="E-mail" Width="*"/>
-                    <DataGridTextColumn Header="Роль" Width="*"/>
+                    <DataGridTextColumn Header="Фото" Width="*" Binding="{Binding Photo}"/>
+                    <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FIO}"/>
+                    <DataGridTextColumn Header="E-mail" Width="*" Binding="{Binding Email}"/>
+                    <DataGridTextColumn Header="Роль" Width="*" Binding="{Binding Role.RoleName}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Количество:" Margin="10" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
+            <Label Name="ColvoLabel" Content="Количество:" Margin="10" FontFamily="Comic Sans MS" Foreground="#0000CC"/>
         </StackPanel>
     </Grid>
 

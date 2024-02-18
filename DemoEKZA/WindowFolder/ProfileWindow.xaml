@@ -13,20 +13,20 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Margin="10">
-            <Label Content="ФИО:" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="FullName"  FontFamily="Comic Sans MS"/>
+            <Label Content="ФИО:" FontFamily="Comic Sans MS" />
+            <TextBox x:Name="FullName"  FontFamily="Comic Sans MS" Text="{Binding FIO}"/>
             <Label Content="Пол:" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="Gender"  FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="Gender"  FontFamily="Comic Sans MS" Text="{Binding Gender.GenderId}"/>
             <Label Content="Дата рождения:" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="DateOfBirth"  FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="DateOfBirth"  FontFamily="Comic Sans MS" />
             <Label Content="Id Number:" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="IdNumber"  FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="IdNumber"  FontFamily="Comic Sans MS" Text="{Binding IdUser}"/>
             <Label Content="Страна:" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="Country"  FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="Country"  FontFamily="Comic Sans MS" />
             <Label Content="Телефон:" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="PhoneNumber"  FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="PhoneNumber"  FontFamily="Comic Sans MS" Text="{Binding Phone}"/>
             <Label Content="Email:" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="Email"  FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="Email"  FontFamily="Comic Sans MS" Text="{Binding Email}"/>
             
         </StackPanel>
         <StackPanel Grid.Column="1">
