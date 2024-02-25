@@ -25,6 +25,7 @@ namespace DemoEKZA.WindowFolder
     {
         private int _failedAttempts;
         private DateTime _lockoutEnd;
+        public static int UserNumebr;
 
         public AutorisationWindow()
         {
@@ -107,9 +108,11 @@ namespace DemoEKZA.WindowFolder
                     {
                         case 7:
                             new EventList().Show();
+                            UserNumebr = user.IdUser;
                             break;
                         case 8:
                             new ModerWindow().Show();
+                            UserNumebr = user.IdUser;
                             break;
                         case 3:
 

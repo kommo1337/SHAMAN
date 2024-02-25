@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoEKZA.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,37 @@ namespace DemoEKZA.WindowFolder
     /// </summary>
     public partial class EventInfoWindow : Window
     {
-        public EventInfoWindow()
+        Event user = new Event();
+        public EventInfoWindow(Event user)
         {
+            DataContext = user;
+
+            this.user.IdEvent = user.IdEvent;
+
+            
+            
+
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (var context = DBEntities.GetContext())
+            {
+                
+                Event user = context.Event.FirstOrDefault(u => u.IdEvent == AutorisationWindow.UserNumebr);
+
+                
+                if (user != null)
+                {
+                    
+                    OpisanieTB.DataContext = user;
+                }
+                else
+                {
+                    
+                }
+            }
         }
     }
 }
