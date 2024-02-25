@@ -42,7 +42,7 @@ namespace DemoEKZA.WindowFolder
                         fullNameTextBox.Text = user.FIO;
                         genderTextBox.Text = Convert.ToString(user.IdGender);
                         dateOfBirthTextBox.Text = DateTime.Now.ToString();
-                        idNumberTextBox.Text = Convert.ToString( user.IdUser);
+                        idNumberTextBox.Text = Convert.ToString( user.IdUser); 
                         countryTextBox.Text = "Russia";
                         phoneNumberTextBox.Text = user.Phone;
                         emailTextBox.Text = user.Email;
